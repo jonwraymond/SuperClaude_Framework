@@ -3,7 +3,7 @@ name: research
 description: Deep web research with adaptive planning and intelligent search
 category: command
 complexity: advanced
-mcp-servers: [tavily, sequential, playwright, serena]
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, playwright, serena]
 personas: [deep-research-agent]
 ---
 
@@ -18,7 +18,7 @@ personas: [deep-research-agent]
 - Academic or technical research requirements
 - Market analysis and competitive intelligence
 
-## Context Trigger Pattern
+## Usage
 ```
 /sc:research "[query]" [--depth quick|standard|deep|exhaustive] [--strategy planning|intent|unified]
 ```
@@ -80,10 +80,30 @@ personas: [deep-research-agent]
 - **Exhaustive**: Maximum depth, 5 hops, complete investigation
 
 ## MCP Integration
-- **Tavily**: Primary search and extraction engine
-- **Sequential**: Complex reasoning and synthesis
-- **Playwright**: JavaScript-heavy content extraction
-- **Serena**: Research session persistence
+
+### Primary Research Tools
+- **Firecrawl**: Advanced web scraping and content extraction (preferred for all web tasks)
+- **Tavily**: Web search with real-time information retrieval
+- **Zen**: Deep reasoning, consensus building, and systematic analysis (zen_thinkdeep, zen_consensus)
+- **Sequential-thinking**: Multi-step reasoning and structured analysis workflows
+
+### Knowledge & Memory
+- **ByteRover**: Retrieve prior research patterns and store new insights with timestamps
+- **Basic-Memory**: Create research notes with WikiLinks and tags in Obsidian graph
+- **Context7**: Official library/API documentation and code examples
+
+### Code & Documentation
+- **Ref**: Search documentation across web/github repositories
+- **Octocode**: GitHub code exploration and repository analysis
+- **Playwright**: Browser automation for JavaScript-heavy content extraction
+- **Serena**: Research session persistence and project memory
+
+### Workflow Integration
+1. **Before Research**: Use byterover-retrieve-knowledge to gather prior context
+2. **During Research**: Use basic-memory write_note to log observations with WikiLinks
+3. **Web Content**: Prefer firecrawl over curl for all web scraping needs
+4. **Deep Analysis**: Use zen_thinkdeep for complex reasoning and synthesis
+5. **After Research**: Store insights in byterover with timestamps and complete findings
 
 ## Output Standards
 - Save reports to `claudedocs/research_[topic]_[timestamp].md`
@@ -97,6 +117,14 @@ personas: [deep-research-agent]
 /sc:research "competitive analysis of AI coding assistants" --depth deep
 /sc:research "best practices for distributed systems" --strategy unified
 ```
+
+
+## Tool Coordination
+- **Read/Write/Edit**: File operations and content management
+- **TodoWrite**: Progress tracking for multi-step operations  
+- **Task**: Parallel execution and delegation
+- **WebSearch**: Research and external information gathering
+
 
 ## Boundaries
 **Will**: Current information, intelligent search, evidence-based analysis

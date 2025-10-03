@@ -2,12 +2,14 @@
 name: build
 description: "Build, compile, and package projects with intelligent error handling and optimization"
 category: utility
-complexity: enhanced
-mcp-servers: [playwright]
-personas: [devops-engineer]
+complexity: advanced
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, playwright, serena]
+personas: [devops]
 ---
 
 # /sc:build - Project Building and Packaging
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Project compilation and packaging requests for different environments
@@ -34,6 +36,32 @@ Key behaviors:
 - Comprehensive build reporting with timing metrics and artifact analysis
 
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Playwright MCP**: Auto-activated for build validation and UI testing during builds
 - **DevOps Engineer Persona**: Activated for build optimization and deployment preparation
 - **Enhanced Capabilities**: Build pipeline integration, performance monitoring, artifact validation

@@ -1,3 +1,9 @@
+---
+name: MODE_Task_Management
+category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time]
+---
+
 # Task Management Mode
 
 **Purpose**: Hierarchical task organization with persistent memory for complex multi-step operations

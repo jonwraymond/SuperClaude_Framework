@@ -1,13 +1,15 @@
 ---
 name: reflect
 description: "Task reflection and validation using Serena MCP analysis capabilities"
-category: special
+category: utility
 complexity: standard
-mcp-servers: [serena]
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, serena]
 personas: []
 ---
 
 # /sc:reflect - Task Reflection and Validation
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Task completion requiring validation and quality assessment
@@ -33,6 +35,32 @@ Key behaviors:
 - Session lifecycle integration with cross-session persistence and learning capture
 - Performance-critical operations with <200ms core reflection and validation
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Serena MCP**: Mandatory integration for reflection analysis, task validation, and session metadata
 - **Reflection Tools**: think_about_task_adherence, think_about_collected_information, think_about_whether_you_are_done
 - **Memory Operations**: Cross-session persistence with read_memory, write_memory, list_memories

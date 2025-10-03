@@ -1,3 +1,9 @@
+---
+name: MODE_Business_Panel
+category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time]
+---
+
 # MODE_Business_Panel.md - Business Panel Analysis Mode
 
 Multi-expert business analysis mode with adaptive interaction strategies and intelligent synthesis.

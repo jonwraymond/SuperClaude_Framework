@@ -3,11 +3,13 @@ name: document
 description: "Generate focused documentation for components, functions, APIs, and features"
 category: utility
 complexity: basic
-mcp-servers: []
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, playwright, serena]
 personas: []
 ---
 
 # /sc:document - Focused Documentation Generation
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Documentation requests for specific components, functions, or features
@@ -32,6 +34,29 @@ Key behaviors:
 - Multi-format documentation generation (inline, external, API reference, guides)
 - Consistent formatting and cross-reference integration
 - Language-specific documentation patterns and conventions
+
+## MCP Integration
+
+### Core Documentation Tools
+- **Zen**: Deep analysis (zen_thinkdeep), systematic documentation review (zen_codereview)
+- **Sequential-thinking**: Multi-step documentation workflows and structured content creation
+- **Serena**: Code analysis, symbol understanding, and project memory
+
+### Knowledge & Memory Integration
+- **ByteRover**: Retrieve documentation patterns and store verified content templates with timestamps
+- **Basic-Memory**: Document content decisions and documentation patterns with WikiLinks
+
+### Research & Content Tools
+- **Context7**: Official framework documentation and API reference examples
+- **Ref**: Search documentation for content patterns and best practices
+- **Firecrawl**: Web scraping for documentation examples and industry standards
+- **Octocode**: GitHub exploration for documentation patterns and examples
+- **Tavily**: Web search for current documentation best practices
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
 
 ## Tool Coordination
 - **Read**: Component analysis and existing documentation review

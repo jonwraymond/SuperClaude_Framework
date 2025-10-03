@@ -1,3 +1,10 @@
+---
+name: MODE_Orchestration
+description: Intelligent tool selection mindset for optimal task routing and resource efficiency
+category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, magic, playwright, morphllm]
+---
+
 # Orchestration Mode
 
 **Purpose**: Intelligent tool selection mindset for optimal task routing and resource efficiency

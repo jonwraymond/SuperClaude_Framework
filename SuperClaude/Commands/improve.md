@@ -3,11 +3,13 @@ name: improve
 description: "Apply systematic improvements to code quality, performance, and maintainability"
 category: workflow
 complexity: standard
-mcp-servers: [sequential, context7]
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena]
 personas: [architect, performance, quality, security]
 ---
 
 # /sc:improve - Code Improvement
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Code quality enhancement and refactoring requests
@@ -34,6 +36,32 @@ Key behaviors:
 - Safe refactoring with comprehensive validation and rollback capabilities
 
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Sequential MCP**: Auto-activated for complex multi-step improvement analysis and planning
 - **Context7 MCP**: Framework-specific best practices and optimization patterns
 - **Persona Coordination**: Architect (structure), Performance (speed), Quality (maintainability), Security (safety)

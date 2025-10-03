@@ -1,13 +1,15 @@
 ---
 name: spec-panel
-description: "Multi-expert specification review and improvement using renowned specification and software engineering experts"
+description: "Multi-expert specification review with comprehensive analysis"
 category: analysis
-complexity: enhanced
-mcp-servers: [sequential, context7]
+complexity: advanced
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena]
 personas: [technical-writer, system-architect, quality-engineer]
 ---
 
 # /sc:spec-panel - Expert Specification Review Panel
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Specification quality review and improvement requests
@@ -95,6 +97,32 @@ Key behaviors:
 - **Critique Focus**: "How does this specification handle cloud-native deployment and operational concerns?"
 
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Sequential MCP**: Primary engine for expert panel coordination, structured analysis, and iterative improvement
 - **Context7 MCP**: Auto-activated for specification patterns, documentation standards, and industry best practices
 - **Technical Writer Persona**: Activated for professional specification writing and documentation quality
@@ -412,6 +440,14 @@ Comprehensive analysis with full expert commentary, examples, and implementation
 - Specification writing pattern recognition and teaching
 - Best practice library development and sharing
 - Mentoring mode with educational focus and guidance
+
+
+## Key Patterns
+- **Systematic Execution**: Structured approach → comprehensive results
+- **Memory Integration**: ByteRover retrieve → process → store pattern
+- **Progressive Enhancement**: Iterative refinement with persistent context
+- **Cross-Session Continuity**: Serena MCP for long-running operations
+
 
 ## Boundaries
 

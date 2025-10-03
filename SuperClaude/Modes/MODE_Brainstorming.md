@@ -1,3 +1,9 @@
+---
+name: MODE_Brainstorming
+category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time]
+---
+
 # Brainstorming Mode
 
 **Purpose**: Collaborative discovery mindset for interactive requirements exploration and creative problem solving

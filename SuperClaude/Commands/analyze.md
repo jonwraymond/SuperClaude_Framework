@@ -3,11 +3,13 @@ name: analyze
 description: "Comprehensive code analysis across quality, security, performance, and architecture domains"
 category: utility
 complexity: basic
-mcp-servers: []
-personas: []
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, serena]
+personas: [security-engineer, quality-engineer, performance-engineer, system-architect]
 ---
 
 # /sc:analyze - Code Analysis and Quality Assessment
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Code quality assessment requests for projects or specific components
@@ -32,6 +34,27 @@ Key behaviors:
 - Intelligent file discovery and language-specific pattern recognition
 - Severity-based prioritization of findings and recommendations
 - Comprehensive reporting with metrics, trends, and actionable insights
+
+## MCP Integration
+
+### Analysis & Reasoning Tools
+- **Zen**: Deep code analysis (zen_thinkdeep), systematic code review (zen_codereview), consensus building (zen_consensus)
+- **Sequential-thinking**: Multi-step analysis and structured investigation workflows
+- **Serena**: Semantic code understanding, symbol analysis, and project memory
+
+### Knowledge & Memory Integration
+- **ByteRover**: Retrieve analysis patterns and store verified findings with timestamps
+- **Basic-Memory**: Document analysis decisions and patterns with WikiLinks
+
+### Documentation & Context
+- **Context7**: Official documentation for frameworks and best practices
+- **Ref**: Search documentation for analysis guidelines and standards
+- **Octocode**: GitHub code exploration for pattern analysis and examples
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
 
 ## Tool Coordination
 - **Glob**: File discovery and project structure analysis

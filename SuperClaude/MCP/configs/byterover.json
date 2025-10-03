@@ -1,0 +1,12 @@
+{
+  "byterover-mcp": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@byterover/mcp-server"
+    ],
+    "env": {
+      "BYTEROVER_MCP_TOKEN": "${BYTEROVER_MCP_TOKEN}"
+    }
+  }
+}

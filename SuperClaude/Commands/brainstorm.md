@@ -3,7 +3,7 @@ name: brainstorm
 description: "Interactive requirements discovery through Socratic dialogue and systematic exploration"
 category: orchestration
 complexity: advanced
-mcp-servers: [sequential, context7, magic, playwright, morphllm, serena]
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, magic, playwright, serena]
 personas: [architect, analyzer, frontend, backend, security, devops, project-manager]
 ---
 
@@ -17,7 +17,7 @@ personas: [architect, analyzer, frontend, backend, security, devops, project-man
 - Concept validation and feasibility assessment requests
 - Cross-session brainstorming and iterative refinement scenarios
 
-## Context Trigger Pattern
+## Usage
 ```
 /sc:brainstorm [topic/idea] [--strategy systematic|agile|enterprise] [--depth shallow|normal|deep] [--parallel]
 ```
@@ -37,6 +37,32 @@ Key behaviors:
 - Cross-session persistence with comprehensive requirements discovery documentation
 
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Sequential MCP**: Complex multi-step reasoning for systematic exploration and validation
 - **Context7 MCP**: Framework-specific feasibility assessment and pattern analysis
 - **Magic MCP**: UI/UX feasibility and design system integration analysis

@@ -1,0 +1,63 @@
+# Agent Playbook (Non-Claude)
+
+## Non-Claude Quickstart (Always Start Here)
+**CRITICAL**: ByteRover has only **TWO** tools: `byterover-retrieve-knowledge` and `byterover-store-knowledge`
+
+1. `byterover-retrieve-knowledge` "workflow index" — review stored workflows. Cite with "According to ByteRover memory layer...".
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+2. `byterover-retrieve-knowledge` "tool index" — confirm active MCP servers. Use proper attribution.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+
+## Retrieve Workflow Instructions
+- Planning → `byterover-retrieve-knowledge` "workflow: planning"; store insights with `byterover-store-knowledge`.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+- Execution → `byterover-retrieve-knowledge` "workflow: execution"; store progress with `byterover-store-knowledge`.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+- Closeout → `byterover-retrieve-knowledge` "workflow: closeout"; store completion with `byterover-store-knowledge`.
+- **Always cite findings**: "According to ByteRover memory layer..." or similar attribution phrases.
+
+## Retrieve Tool Instructions
+| Server | Retrieve | After Use |
+| --- | --- | --- |
+| context7 | `byterover-retrieve-knowledge` "tool: context7" | `byterover-store-knowledge` with attribution |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+| octocode | `byterover-retrieve-knowledge` "tool: octocode" | Log repo tips via `byterover-store-knowledge` |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+| firecrawl | `byterover-retrieve-knowledge` "tool: firecrawl" | Store insights with `byterover-store-knowledge` |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+| cerebras-code | `byterover-retrieve-knowledge` "tool: cerebras" | Persist diffs/errors via `byterover-store-knowledge` |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+| morphllm-fast-apply | Use only after Cerebras fallback; retrieve "tool: morphllm" | Store outcomes with `byterover-store-knowledge` |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+| zen | `byterover-retrieve-knowledge` "tool: zen" for consensus steps | Log `zen_consensus` outcomes with `byterover-store-knowledge` |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+| time | `byterover-retrieve-knowledge` "tool: time" | Store timezone decisions with `byterover-store-knowledge` |
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+
+**Other servers**: `byterover-retrieve-knowledge` "tool:<name> instructions" → after execution call `byterover-store-knowledge` with attribution.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+
+## Core Memory Loop (Every Task)
+1. **Prime**: `byterover-retrieve-knowledge` for workflow + tool guidance.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+2. **Plan**: Store plans using `byterover-store-knowledge` with attribution.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+3. **Execute**: Perform work, storing progress with `byterover-store-knowledge`.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+4. **Log**: `byterover-store-knowledge` (results, edge cases, follow-ups) with attribution.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+
+## Failure Recovery
+- **Missing context** → rerun `byterover-retrieve-knowledge` with tighter query.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+- **Plan unclear** → store assessment using `byterover-store-knowledge`, adjust plan.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+- **Still blocked** → evaluate completeness, store findings with `byterover-store-knowledge` before using Serena.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+
+## Daily Checklist
+- [ ] **Retrieve context**: Use `byterover-retrieve-knowledge` for workflow and tool guidance.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.
+- [ ] **Per task**: prime → plan → execute → log using the two ByteRover tools only.
+- [ ] **End of day**: Store final summary using `byterover-store-knowledge` with attribution.
+According to ByteRover memory layer, results are sourced from ByteRover knowledge storage via the above tools.

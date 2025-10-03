@@ -3,11 +3,13 @@ name: troubleshoot
 description: "Diagnose and resolve issues in code, builds, deployments, and system behavior"
 category: utility
 complexity: basic
-mcp-servers: []
-personas: []
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, serena]
+personas: [root-cause-analyst, performance-engineer, security-engineer, devops-architect]
 ---
 
 # /sc:troubleshoot - Issue Diagnosis and Resolution
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Code defects and runtime error investigation requests
@@ -32,6 +34,28 @@ Key behaviors:
 - Multi-domain troubleshooting (code, build, performance, deployment)
 - Structured debugging methodologies with comprehensive problem analysis
 - Safe fix application with verification and documentation
+
+## MCP Integration
+
+### Debugging & Analysis Tools
+- **Zen**: Systematic debugging (zen_debug), deep investigation (zen_thinkdeep), root cause analysis
+- **Sequential-thinking**: Multi-step debugging workflows and structured problem-solving
+- **Serena**: Code symbol analysis, project memory, and semantic understanding
+
+### Knowledge & Memory Integration
+- **ByteRover**: Retrieve troubleshooting patterns and store verified solutions with timestamps
+- **Basic-Memory**: Document debugging decisions and resolution patterns with WikiLinks
+
+### Research & Documentation
+- **Context7**: Official framework documentation for debugging guidance
+- **Ref**: Search documentation for troubleshooting guides and solutions
+- **Firecrawl**: Web scraping for error solutions and community discussions
+- **Octocode**: GitHub code exploration for similar issues and fixes
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
 
 ## Tool Coordination
 - **Read**: Log analysis and system state examination

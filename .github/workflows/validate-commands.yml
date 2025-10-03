@@ -1,0 +1,60 @@
+name: Validate SuperClaude Commands
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'SuperClaude/Commands/**'
+      - 'scripts/validate_commands.py'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'SuperClaude/Commands/**'
+      - 'scripts/validate_commands.py'
+
+jobs:
+  validate:
+    name: Validate Command Files
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+      
+      - name: Run command validation
+        run: |
+          python scripts/validate_commands.py --summary
+      
+      - name: Run strict validation
+        run: |
+          python scripts/validate_commands.py --strict
+      
+      - name: Generate validation report
+        if: always()
+        run: |
+          echo "## 📊 Command Validation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          python scripts/validate_commands.py --summary 2>&1 | tee -a $GITHUB_STEP_SUMMARY
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Command validation failed. Please run `python scripts/validate_commands.py` locally to see details.'
+            })

@@ -2,7 +2,7 @@
 
 ## Overview
 
-MCP (Model Context Protocol) servers extend Claude Code's capabilities through specialized tools. SuperClaude integrates 8 MCP servers and provides Claude with instructions on when to activate them based on your tasks.
+MCP (Model Context Protocol) servers extend Claude Code's capabilities through specialized tools. SuperClaude integrates 11 MCP servers and provides Claude with instructions on when to activate them based on your tasks.
 
 ### 🔍 Reality Check
 - **What MCP servers are**: External Node.js processes that provide additional tools
@@ -20,6 +20,11 @@ MCP (Model Context Protocol) servers extend Claude Code's capabilities through s
 - **tavily**: Web search and real-time information retrieval
 - **chrome-devtools**: Performance analysis and debugging
 
+**Knowledge & Memory Servers:**
+- **byterover**: Intelligent knowledge management with conflict resolution
+- **basic-memory**: Obsidian integration for personal knowledge graphs
+- **firecrawl**: Advanced web scraping and content extraction
+
 ## Quick Start
 
 **Setup Verification**: MCP servers activate automatically. For installation and troubleshooting, see [Installation Guide](../Getting-Started/installation.md) and [Troubleshooting](../Reference/troubleshooting.md).
@@ -36,6 +41,9 @@ MCP (Model Context Protocol) servers extend Claude Code's capabilities through s
 | Large projects, sessions | **serena** |
 | `/sc:research`, `latest`, `current` | **tavily** |
 | `performance`, `debug`, `LCP` | **chrome-devtools** |
+| `knowledge`, `remember`, `context` | **byterover** |
+| `notes`, `graph`, `obsidian` | **basic-memory** |
+| `web`, `scrape`, `crawl`, `search` | **firecrawl** |
 
 ## Server Details
 
@@ -154,6 +162,48 @@ export TAVILY_API_KEY="tvly-your_api_key_here"
 /sc:analyze --performance "homepage"
 ```
 
+### byterover 🧠
+**Purpose**: Intelligent knowledge management with conflict resolution
+**Triggers**: Knowledge retrieval, context building, pattern storage
+**Requirements**: Node.js 16+, BYTEROVER_MCP_TOKEN
+
+```bash
+# Automatic activation
+/sc:implement "user authentication system"
+# → Retrieves relevant patterns and stored knowledge
+
+# Manual activation
+/sc:analyze --byterover "authentication patterns"
+```
+
+### basic-memory 📝
+**Purpose**: Obsidian integration for personal knowledge graphs
+**Triggers**: Note management, knowledge graph operations, WikiLink creation
+**Requirements**: Basic Memory binary, Obsidian integration
+
+```bash
+# Automatic activation
+/sc:research "project architecture decisions"
+# → Creates notes with WikiLinks and tags in Obsidian
+
+# Manual activation
+/sc:notes "save current findings"
+```
+
+### firecrawl 🕸️
+**Purpose**: Advanced web scraping and content extraction
+**Triggers**: Web scraping, site crawling, content extraction
+**Requirements**: Node.js 16+, FIRECRAWL_API_KEY
+
+```bash
+# Automatic activation
+/sc:research "latest React best practices"
+# → Intelligent web search and content extraction
+
+# Manual activation
+/sc:scrape "https://react.dev/docs"
+```
+
 **Capabilities:**
 - **Web Search**: Comprehensive searches with ranking and filtering
 - **News Search**: Time-filtered current events and updates
@@ -207,6 +257,20 @@ export TAVILY_API_KEY="tvly-your_api_key_here"
     "chrome-devtools": {
       "command": "npx",
       "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
+    "byterover-mcp": {
+      "command": "npx",
+      "args": ["-y", "@byterover/mcp-server"],
+      "env": {"BYTEROVER_MCP_TOKEN": "${BYTEROVER_MCP_TOKEN}"}
+    },
+    "basic-memory": {
+      "command": "/Users/jraymond/.local/bin/basic-memory",
+      "args": ["mcp"]
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {"FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"}
     }
   }
 }
@@ -271,18 +335,29 @@ export MORPH_API_KEY="your_key_here"
 # For Tavily server (required for web search - free tier available)
 export TAVILY_API_KEY="tvly-your_key_here"
 
+# For ByteRover server (required for knowledge management)
+export BYTEROVER_MCP_TOKEN="your_byterover_token_here"
+
+# For Firecrawl server (required for web scraping)
+export FIRECRAWL_API_KEY="your_firecrawl_key_here"
+
 # Add to shell profile for persistence
 echo 'export TWENTYFIRST_API_KEY="your_key"' >> ~/.bashrc
 echo 'export MORPH_API_KEY="your_key"' >> ~/.bashrc
 echo 'export TAVILY_API_KEY="your_key"' >> ~/.bashrc
+echo 'export BYTEROVER_MCP_TOKEN="your_token"' >> ~/.bashrc
+echo 'export FIRECRAWL_API_KEY="your_key"' >> ~/.bashrc
 ```
 
 **Environment Variable Usage:**
 - ✅ `TWENTYFIRST_API_KEY` - Required for Magic MCP server functionality
 - ✅ `MORPH_API_KEY` - Required for Morphllm MCP server functionality  
 - ✅ `TAVILY_API_KEY` - Required for Tavily MCP server functionality (free tier available)
+- ✅ `BYTEROVER_MCP_TOKEN` - Required for ByteRover knowledge management functionality
+- ✅ `FIRECRAWL_API_KEY` - Required for Firecrawl web scraping functionality
 - ❌ Other env vars in docs - Examples only, not used by framework
 - 📝 Magic and Morphllm are paid services, Tavily has free tier, framework works without them
+- 📝 Basic Memory requires local installation, no API key needed
 
 ## Server Combinations
 
@@ -300,9 +375,12 @@ echo 'export TAVILY_API_KEY="your_key"' >> ~/.bashrc
 - **Web Development**: magic + context7 + playwright  
 - **Enterprise Refactoring**: serena + morphllm + sequential-thinking
 - **Complex Analysis**: sequential-thinking + context7 + serena
-- **Deep Research**: tavily + sequential-thinking + serena + playwright
+- **Deep Research**: tavily + firecrawl + sequential-thinking + byterover
+- **Knowledge Management**: byterover + basic-memory + sequential-thinking
+- **Web Research**: firecrawl + tavily + basic-memory + byterover
 - **Current Events**: tavily + context7 + sequential-thinking
 - **Performance Tuning**: chrome-devtools + sequential-thinking + playwright
+- **Documentation**: basic-memory + context7 + byterover + sequential-thinking
 
 ## Integration
 

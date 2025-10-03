@@ -3,11 +3,13 @@ name: git
 description: "Git operations with intelligent commit messages and workflow optimization"
 category: utility
 complexity: basic
-mcp-servers: []
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, playwright, serena]
 personas: []
 ---
 
 # /sc:git - Git Operations
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Git repository operations: status, add, commit, push, pull, branch
@@ -66,6 +68,40 @@ Key behaviors:
 /sc:git merge feature-branch --interactive
 # Guided merge with conflict resolution assistance
 ```
+
+
+## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
+### Tool Coordination
+- **Analysis & Research**: Sequential-thinking, Exa, Context7 for deep investigation
+- **Development**: Morphllm, Serena for code changes and project memory
+- **Documentation**: Ref, Context7 for framework-specific docs
+
 
 ## Boundaries
 

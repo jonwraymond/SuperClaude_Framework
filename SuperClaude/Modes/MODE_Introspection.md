@@ -1,3 +1,9 @@
+---
+name: MODE_Introspection
+category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time]
+---
+
 # Introspection Mode
 
 **Purpose**: Meta-cognitive analysis mindset for self-reflection and reasoning optimization

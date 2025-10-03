@@ -1,3 +1,9 @@
+---
+name: MODE_Token_Efficiency
+category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time]
+---
+
 # Token Efficiency Mode
 
 **Purpose**: Symbol-enhanced communication mindset for compressed clarity and efficient token usage

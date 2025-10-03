@@ -3,7 +3,7 @@ name: implement
 description: "Feature and code implementation with intelligent persona activation and MCP integration"
 category: workflow
 complexity: standard
-mcp-servers: [context7, sequential, magic, playwright]
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, magic, playwright, serena]
 personas: [architect, frontend, backend, security, qa-specialist]
 ---
 
@@ -17,7 +17,7 @@ personas: [architect, frontend, backend, security, qa-specialist]
 - Multi-domain development requiring coordinated expertise
 - Implementation projects requiring testing and validation integration
 
-## Context Trigger Pattern
+## Usage
 ```
 /sc:implement [feature-description] [--type component|api|service|feature] [--framework react|vue|express] [--safe] [--with-tests]
 ```
@@ -37,10 +37,33 @@ Key behaviors:
 - Comprehensive testing integration with Playwright for validation
 
 ## MCP Integration
-- **Context7 MCP**: Framework patterns and official documentation for React, Vue, Angular, Express
-- **Magic MCP**: Auto-activated for UI component generation and design system integration
-- **Sequential MCP**: Complex multi-step analysis and implementation planning
-- **Playwright MCP**: Testing validation and quality assurance integration
+
+### Core Implementation Tools
+- **Context7**: Official framework documentation and patterns for React, Vue, Angular, Express
+- **Magic**: UI component generation and design system integration
+- **Sequential-thinking**: Multi-step analysis and implementation planning
+- **Playwright**: E2E testing, browser automation, and validation integration
+- **Serena**: Semantic code understanding, project memory, and symbol operations
+
+### Advanced Reasoning & Analysis
+- **Zen**: Deep analysis (zen_thinkdeep), code review (zen_codereview), consensus building (zen_consensus)
+
+### Knowledge & Memory Integration
+- **ByteRover**: Retrieve implementation patterns and store verified code solutions with timestamps
+- **Basic-Memory**: Document implementation decisions with WikiLinks in Obsidian
+
+### Research & Documentation
+- **Firecrawl**: Advanced web scraping for implementation examples and documentation
+- **Ref**: Search documentation across web/github for implementation guidance
+- **Octocode**: GitHub code exploration for implementation patterns and examples
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Implementation**: Use byterover-retrieve-knowledge to gather relevant patterns
+2. **During Implementation**: Use basic-memory write_note to log decisions with WikiLinks
+3. **Code Generation**: Use cerebras-code_write for comprehensive updates, morphllm-fast-apply for rapid edits
+4. **Analysis**: Use zen_codereview for systematic code review
+5. **Testing**: Use playwright for E2E validation
+6. **After Implementation**: Store verified solutions in byterover with complete code snippets
 
 ## Tool Coordination
 - **Write/Edit/MultiEdit**: Code generation and modification for implementation

@@ -3,11 +3,13 @@ name: workflow
 description: "Generate structured implementation workflows from PRDs and feature requirements"
 category: orchestration
 complexity: advanced
-mcp-servers: [sequential, context7, magic, playwright, morphllm, serena]
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, magic, playwright, serena]
 personas: [architect, analyzer, frontend, backend, security, devops, project-manager]
 ---
 
 # /sc:workflow - Implementation Workflow Generator
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - PRD and feature specification analysis for implementation planning
@@ -34,6 +36,32 @@ Key behaviors:
 - Cross-session workflow management with comprehensive dependency tracking
 
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Sequential MCP**: Complex multi-step workflow analysis and systematic implementation planning
 - **Context7 MCP**: Framework-specific workflow patterns and implementation best practices
 - **Magic MCP**: UI/UX workflow generation and design system integration strategies

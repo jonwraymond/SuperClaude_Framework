@@ -1,13 +1,15 @@
 ---
 name: select-tool
 description: "Intelligent MCP tool selection based on complexity scoring and operation analysis"
-category: special
-complexity: high
-mcp-servers: [serena, morphllm]
+category: utility
+complexity: advanced
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time, serena, serena]
 personas: []
 ---
 
 # /sc:select-tool - Intelligent MCP Tool Selection
+
+> **Context Framework Note**: This file provides behavioral instructions for Claude Code when users type `/sc:*` patterns. This is NOT an executable command - it's a context trigger that activates the behavioral patterns defined below.
 
 ## Triggers
 - Operations requiring optimal MCP tool selection between Serena and Morphllm
@@ -34,6 +36,32 @@ Key behaviors:
 - Tool capability matching for Serena (semantic operations) vs Morphllm (pattern operations)
 
 ## MCP Integration
+
+### Knowledge & Memory Integration
+- **ByteRover MCP**: Primary memory layer for storing implementation knowledge
+  - Before: `byterover-retrieve-knowledge` for relevant context
+  - During: Track progress and decisions
+  - After: `byterover-store-knowledge` with complete implementation details
+- **Basic-Memory MCP**: Session notes and cross-session context
+
+### Workflow Integration (per AGENTS.md)
+1. **Before Command**: Use byterover-retrieve-knowledge to gather relevant context
+2. **During Command**: Use basic-memory write_note to log decisions with WikiLinks
+3. **After Command**: Store verified insights in byterover with complete implementation context
+
+```
+Before Command:
+  → byterover-retrieve-knowledge(query="relevant context")
+
+During Command:
+  → Track decisions and progress
+  → Document key findings
+
+After Command:
+  → byterover-store-knowledge(messages="implementation details with code")
+  → Include timestamps and full context
+```
+
 - **Serena MCP**: Optimal for semantic operations, LSP functionality, symbol navigation, and project context
 - **Morphllm MCP**: Optimal for pattern-based edits, bulk transformations, and speed-critical operations
 - **Decision Matrix**: Intelligent routing based on complexity scoring and operation characteristics

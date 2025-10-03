@@ -2,6 +2,7 @@
 name: MODE_DeepResearch
 description: Research mindset for systematic investigation and evidence-based reasoning
 category: mode
+mcp-servers: [zen, ref, firecrawl, exa, byterover, basic-memory, sequential-thinking, tavily, context7, octocode, cerebras-code, morphllm-fast-apply, time]
 ---
 
 # Deep Research Mode

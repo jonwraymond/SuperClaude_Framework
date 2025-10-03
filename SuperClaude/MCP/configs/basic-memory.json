@@ -1,0 +1,8 @@
+{
+  "basic-memory": {
+    "command": "/Users/jraymond/.local/bin/basic-memory",
+    "args": [
+      "mcp"
+    ]
+  }
+}
